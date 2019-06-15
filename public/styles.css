@@ -7,10 +7,6 @@
   width: 75px;
 }
 
-p {
-  background-color: yellow;
-}
-
 span {
   background-color: beige;
   display: inline-block;
