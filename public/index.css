@@ -1,0 +1,19 @@
+.input-array {
+  display: flex;
+}
+
+.element {
+  height: 20px;
+  width: 75px;
+}
+
+p {
+  background-color: yellow;
+}
+
+span {
+  background-color: beige;
+  display: inline-block;
+  width: 140px;
+  text-align: center;
+}
