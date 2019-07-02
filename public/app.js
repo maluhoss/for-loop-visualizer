@@ -60,8 +60,13 @@ function repeatLoop(inputArray, startingIndex, inputBody, secondInputBody) {
   let visualized = document.querySelector(".loop-container");
   let begin = 1;
   for (let i = startingIndex; i < inputArray.length; i++) {
-    let forLoop = document.createElement("p");
-    forLoop.innerHTML = `Loop: ${begin}, when i = ${i}, <br/>for (let i = ${i}; i < <span onclick="showLength(${inputArray.length})">inputArray.length</span>; i++) { <br/> &nbsp;&nbsp;&nbsp;&nbsp;${inputBody} <span onclick="showValue(${i}, ${inputArray[i]})">inputArray[${i}]</span> ${secondInputBody};<br/>}`;
+    let forLoopNumber = document.createElement("p");
+    forLoopNumber.innerHTML = `Loop: ${begin}, when i = ${i},`;
+
+    let forLoop = document.createElement("code");
+    forLoop.className = "language-javascript";
+    forLoop.innerHTML = `for (let i = ${i}; i < <span onclick="showLength(${inputArray.length})">inputArray.length</span>; i++) { <br/> &nbsp;&nbsp;&nbsp;&nbsp;${inputBody} <span onclick="showValue(${i}, ${inputArray[i]})">inputArray[${i}]</span> ${secondInputBody};<br/>}`;
+    visualized.appendChild(forLoopNumber);
     visualized.appendChild(forLoop);
     begin++;
   }
