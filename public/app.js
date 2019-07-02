@@ -25,6 +25,15 @@ function createArray() {
   return inputArray;
 }
 
+function myFunction() {
+  const forLoopInput = document.querySelector('.for-loop-input');
+  forLoopInput.classList.remove("hidden");
+
+  const inputArray = createArray();
+  const startingValue = document.querySelector('#starting-value');
+  startingValue.setAttribute("max", inputArray.length - 1);
+}
+
 function showLength(index) {
   if (event.target.innerHTML === "inputArray.length") {
     event.target.innerHTML = index;
@@ -46,7 +55,7 @@ function displayLoopInfo(inputArray, startingValue) {
   let loopInfo = document.createElement("p");
   let loop;
 
-  if (inputArray.length === 1) {
+  if (inputArray.length - startingValue === 1) {
     loop = 'loop';
   } else {
     loop = 'loops';
