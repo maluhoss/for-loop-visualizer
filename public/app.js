@@ -8,6 +8,7 @@ function createElementInArray() {
   newComma.innerHTML = ",";
   newComma.setAttribute("style", "padding-right: 10px;");
   newElement.className = "element";
+  newElement.classList.add("shadow", "border", "w-10");
   array.appendChild(newComma);
   array.appendChild(newElement);
   array.appendChild(lastSquareBracket);
@@ -60,7 +61,7 @@ function repeatLoop(inputArray, startingIndex, inputBody, secondInputBody) {
   let begin = 1;
   for (let i = startingIndex; i < inputArray.length; i++) {
     let forLoop = document.createElement("p");
-    forLoop.innerHTML = `Loop: ${begin}, when i = ${i}, <br/>for (let i = ${i}; i < <span onclick="showLength(${inputArray.length})">inputArray.length</span>; i++) { <br/> &nbsp;&nbsp;&nbsp;&nbsp;${inputBody} <span onclick="showValue(${i},${inputArray[i]})">inputArray[${i}]</span> ${secondInputBody};<br/>}`;
+    forLoop.innerHTML = `Loop: ${begin}, when i = ${i}, <br/>for (let i = ${i}; i < <span onclick="showLength(${inputArray.length})">inputArray.length</span>; i++) { <br/> &nbsp;&nbsp;&nbsp;&nbsp;${inputBody} <span onclick="showValue(${i}, ${inputArray[i]})">inputArray[${i}]</span> ${secondInputBody};<br/>}`;
     visualized.appendChild(forLoop);
     begin++;
   }
