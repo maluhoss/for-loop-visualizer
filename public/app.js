@@ -4,14 +4,30 @@ function createElementInArray() {
   array.removeChild(lastSquareBracket);
 
   let newElement = document.createElement("input");
+  let newDelete = document.createElement("p");
   let newComma = document.createElement("p");
+  newDelete.innerHTML = "x";
   newComma.innerHTML = ",";
+  newComma.className = "additional";
+  newDelete.onclick = removeElement;
+  newDelete.className = "additional";
   newComma.setAttribute("style", "padding-right: 10px;");
   newElement.className = "element";
-  newElement.classList.add("shadow", "border", "w-10");
+  newElement.classList.add("shadow", "border", "w-10", 'additional');
   array.appendChild(newComma);
   array.appendChild(newElement);
+  array.appendChild(newDelete);
   array.appendChild(lastSquareBracket);
+}
+
+function removeElement() {
+  let array = document.querySelector(".input-array");
+  const elementToRemove = event.target.previousSibling;
+  const deleteButtonToRemove = event.target;
+  const commaToRemove = elementToRemove.previousSibling;
+  array.removeChild(elementToRemove);
+  array.removeChild(deleteButtonToRemove);
+  array.removeChild(commaToRemove);
 }
 
 function createArray() {
@@ -30,6 +46,8 @@ function myFunction() {
   forLoopInput.classList.remove("hidden");
 
   const inputArray = createArray();
+  const providedArray = document.querySelector('.array-provided');
+  providedArray.innerHTML = `let inputArray = [${inputArray}];`;
   const startingValue = document.querySelector('#starting-value');
   startingValue.setAttribute("max", inputArray.length - 1);
 }
@@ -97,10 +115,74 @@ function displayLoop(array, starting, body, secondBody) {
   repeatLoop(array, starting, body, secondBody);
 }
 
+function newArray() {
+  const arrayInput = document.querySelector('.input-array');
+  const additionalElements = document.querySelectorAll('.additional');
+  const forLoopInput = document.querySelector('.for-loop-input');
+  const loopContainer = document.querySelector('.loop-container');
+  const main = document.querySelector('main');
+  const firstElement = document.querySelector("#first");
+  const startingValue = document.querySelector("#starting-value");
+  const firstBody = document.querySelector("#first-body");
+  const secondBody = document.querySelector("#second-body");
+  firstElement.value = '';
+  startingValue.value = 0;
+  firstBody.value = '';
+  secondBody.value = '';
+  arrayInput.classList.remove("hidden");
+  forLoopInput.classList.add("hidden");
+
+  for (let i = 0; i < additionalElements.length; i++) {
+    arrayInput.removeChild(additionalElements[i]);
+  }
+
+  main.removeChild(loopContainer);
+
+  const forLoopButtons = document.querySelectorAll(".for-loop-button");
+  forLoopButtons[0].classList.remove("hidden");
+  forLoopButtons[1].classList.remove("hidden");
+}
+
+function newLoop() {
+  const main = document.querySelector('main');
+  const loopContainer = document.querySelector('.loop-container');
+  const forLoopInput = document.querySelector('.for-loop-input');
+  const startingValue = document.querySelector("#starting-value");
+  const firstBody = document.querySelector("#first-body");
+  const secondBody = document.querySelector("#second-body");
+  startingValue.value = 0;
+  firstBody.value = '';
+  secondBody.value = '';
+
+  forLoopInput.classList.remove("hidden");
+  main.removeChild(loopContainer);
+}
+
 function visualize() {
+  const forLoopArray = document.querySelector('.input-array');
+  const forLoopButtons = document.querySelectorAll(".for-loop-button");
+  forLoopArray.classList.add("hidden");
+  forLoopButtons[0].classList.add("hidden");
+  forLoopButtons[1].classList.add("hidden");
+
+  const ForLoopInput = document.querySelector('.for-loop-input');
+  ForLoopInput.classList.add("hidden");
+
   let inputArray = createArray();
   let startingValue = document.querySelector("#starting-value").value;
   let code = document.querySelector("#first-body").value;
   let codeTwo = document.querySelector("#second-body").value;
   displayLoop(inputArray, startingValue, code, codeTwo);
+
+  const loopContainer = document.querySelector('.loop-container');
+  const newArrayButton = document.createElement('button');
+  const newLoopButton = document.createElement('button');
+  newArrayButton.innerHTML = "New Array";
+  newArrayButton.classList.add("bg-red-600", "rounded", "p-1");
+  newArrayButton.onclick = newArray;
+  newLoopButton.innerHTML = "Modify For Loop";
+  newLoopButton.classList.add("bg-red-600", "rounded", "p-1");
+  newLoopButton.onclick = newLoop;
+  loopContainer.appendChild(newArrayButton);
+  loopContainer.appendChild(newLoopButton);
 }
