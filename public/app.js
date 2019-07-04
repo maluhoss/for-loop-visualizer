@@ -189,7 +189,8 @@ function visualize() {
   ForLoopInput.classList.add("hidden");
 
   let inputArray = createArray();
-  let startingValue = document.querySelector("#starting-value").value;
+  const allOptions = document.querySelector("#starting-value");
+  const startingValue = allOptions.options[allOptions.selectedIndex].text
   let code = document.querySelector("#first-body").value;
   let codeTwo = document.querySelector("#second-body").value;
   displayLoop(inputArray, startingValue, code, codeTwo);
