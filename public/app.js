@@ -41,6 +41,14 @@ function createArray() {
   return inputArray;
 }
 
+function createOptions(arrayLength) {
+  let startingValueOptions = [];
+  for (let i = 0; i < arrayLength; i++) {
+    startingValueOptions.push(`<option value="${i}">${i}</option>`);
+  }
+  return startingValueOptions;
+}
+
 function myFunction() {
   const forLoopInput = document.querySelector('.for-loop-input');
   forLoopInput.classList.remove("hidden");
@@ -48,6 +56,17 @@ function myFunction() {
   const inputArray = createArray();
   const providedArray = document.querySelector('.array-provided');
   providedArray.innerHTML = `let inputArray = [${inputArray}];`;
+
+  const options = createOptions(inputArray.length);
+  const providedForLoop = document.querySelector('.for-loop-provided');
+providedForLoop.innerHTML = `for (let i = <select id="starting-value">
+  ${options}
+</select>; i < inputArray.length; i++) {
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;<input id="first-body" class="shadow border w-40" type="text">inputArray[i]<input id="second-body" class="shadow border w-40" type="text">;
+            <br/>
+            }`
+
   const startingValue = document.querySelector('#starting-value');
   startingValue.setAttribute("max", inputArray.length - 1);
 }
@@ -147,7 +166,8 @@ function newLoop() {
   const main = document.querySelector('main');
   const loopContainer = document.querySelector('.loop-container');
   const forLoopInput = document.querySelector('.for-loop-input');
-  const startingValue = document.querySelector("#starting-value");
+  const allOptions = document.querySelector("#starting-value");
+  const startingValue = allOptions.options[allOptions.selectedIndex].text;
   const firstBody = document.querySelector("#first-body");
   const secondBody = document.querySelector("#second-body");
   startingValue.value = 0;
