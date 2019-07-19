@@ -8,12 +8,14 @@ function createElementInArray() {
   let newComma = document.createElement("p");
   newDelete.innerHTML = "x";
   newComma.innerHTML = ",";
-  newComma.className = "additional";
+  newComma.classList.add("additional");
   newDelete.onclick = removeElement;
   newDelete.className = "additional";
-  newComma.setAttribute("style", "padding-right: 10px;");
+  newDelete.classList.add("inline-block", "bg-red-600", "h-6", "text-white", "text-center", "px-2", "rounded-full", "z-10", "-mt-3", "-ml-3", "-mr-1", "text-sm", "cursor-pointer");
+  newComma.setAttribute("style", "padding-right: 8px;");
   newElement.className = "element";
-  newElement.classList.add("shadow", "border", "w-10", 'additional');
+  newElement.classList.add("shadow", "border", "w-10", 'additional', "h-6", "mb-4", "text-center");
+  lastSquareBracket.className = "ml-1"
   array.appendChild(newComma);
   array.appendChild(newElement);
   array.appendChild(newDelete);
@@ -98,7 +100,7 @@ function displayLoopInfo(inputArray, startingValue) {
     loop = 'loops';
   }
 
-  loopInfo.innerHTML = `inputArray = [${inputArray}] <br/> Array length is ${inputArray.length} and starting index is ${startingValue} <br/>Therefore, there will be ${inputArray.length - startingValue} ${loop}`;
+  loopInfo.innerHTML = `Array is [${inputArray}] <br/> Array length is ${inputArray.length} and starting index is ${startingValue} <br/>Therefore, there will be ${inputArray.length - startingValue} ${loop}`;
   visualized.appendChild(loopInfo);
 }
 
@@ -107,11 +109,13 @@ function repeatLoop(inputArray, startingIndex, inputBody, secondInputBody) {
   let begin = 1;
   for (let i = startingIndex; i < inputArray.length; i++) {
     let forLoopNumber = document.createElement("p");
+    forLoopNumber.classList.add("mt-2", "font-bold");
     forLoopNumber.innerHTML = `Loop: ${begin}, when i = ${i},`;
 
     let forLoop = document.createElement("code");
     forLoop.className = "language-javascript";
-    forLoop.innerHTML = `for (let i = ${i}; i < <span onclick="showLength(${inputArray.length})">inputArray.length</span>; i++) { <br/> &nbsp;&nbsp;&nbsp;&nbsp;${inputBody} <span onclick="showValue(${i}, ${inputArray[i]})">inputArray[${i}]</span> ${secondInputBody};<br/>}`;
+    forLoop.classList.add("font-sans")
+    forLoop.innerHTML = `for (let i = ${i}; i < <span class="inline-block w-32 text-center bg-red-200 rounded cursor-pointer p-1" onclick="showLength(${inputArray.length})">inputArray.length</span>; i++) { <br/> &nbsp;&nbsp;&nbsp;&nbsp;${inputBody} <span class="inline-block w-32 text-center bg-red-200 rounded cursor-pointer mt-1 p-1" onclick="showValue(${i}, ${inputArray[i]})">inputArray[${i}]</span> ${secondInputBody};<br/>}`;
     visualized.appendChild(forLoopNumber);
     visualized.appendChild(forLoop);
     begin++;
@@ -135,6 +139,9 @@ function displayLoop(array, starting, body, secondBody) {
 }
 
 function newArray() {
+  const userInput = document.querySelector('.user-input');
+  userInput.classList.remove("hidden");
+
   const arrayInput = document.querySelector('.input-array');
   const additionalElements = document.querySelectorAll('.additional');
   const forLoopInput = document.querySelector('.for-loop-input');
@@ -163,6 +170,9 @@ function newArray() {
 }
 
 function newLoop() {
+  const userInput = document.querySelector('.user-input');
+  userInput.classList.remove("hidden");
+
   const main = document.querySelector('main');
   const loopContainer = document.querySelector('.loop-container');
   const forLoopInput = document.querySelector('.for-loop-input');
@@ -188,6 +198,9 @@ function visualize() {
   const ForLoopInput = document.querySelector('.for-loop-input');
   ForLoopInput.classList.add("hidden");
 
+  const userInput = document.querySelector('.user-input');
+  userInput.classList.add("hidden");
+
   let inputArray = createArray();
   const allOptions = document.querySelector("#starting-value");
   const startingValue = allOptions.options[allOptions.selectedIndex].text
@@ -196,13 +209,14 @@ function visualize() {
   displayLoop(inputArray, startingValue, code, codeTwo);
 
   const loopContainer = document.querySelector('.loop-container');
+  loopContainer.classList.add("bg-red-100", "max-w-lg", "mx-auto", "my-12", "p-10", "flex", "flex-col");
   const newArrayButton = document.createElement('button');
   const newLoopButton = document.createElement('button');
   newArrayButton.innerHTML = "New Array";
-  newArrayButton.classList.add("bg-red-600", "rounded", "p-1");
+  newArrayButton.classList.add("bg-green-500", "rounded", "px-2", "h-10", "w-full", "text-white", "mt-4", "mb-2");
   newArrayButton.onclick = newArray;
   newLoopButton.innerHTML = "Modify For Loop";
-  newLoopButton.classList.add("bg-red-600", "rounded", "p-1");
+  newLoopButton.classList.add("bg-indigo-500", "rounded", "px-2", "h-10", "w-full", "text-white");
   newLoopButton.onclick = newLoop;
   loopContainer.appendChild(newArrayButton);
   loopContainer.appendChild(newLoopButton);

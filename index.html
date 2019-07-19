@@ -2,33 +2,37 @@
   <html>
     <head>
       <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
       <script type="text/javascript" src="app.js"></script>
     </head>
-    <body>
-      <header>
-        <h1>For loop visualizer</h1>
+    <body class="bg-green-200">
+      <header class="bg-green-500">
+        <h1 class="text-white font-sans p-3 tracking-wide text-2xl text-center">FOR LOOP VISUALIZER</h1>
       </header>
       <main>
-        <div class="user-input max-w-md m-auto">
-          <div class="input-array flex">
+        <div class="user-input max-w-lg mx-auto my-12 p-10 flex flex-wrap bg-red-100">
+          <div class="input-array flex flex-wrap py-2 mr-1">
             <p>let inputArray = [</p>
-            <input id="first" class="element shadow border w-10">
+            <input id="first" class="element shadow border w-10 h-6 mb-4 text-center">
             <p id="square-bracket">];</p>
           </div>
-          <button class="for-loop-button bg-red-600 rounded p-1" onclick="createElementInArray()">Add Element</button>
-          <button class="for-loop-button bg-green-400 rounded p-1" onclick="myFunction()">Submit Array</button>
-          <div class="for-loop-input mt-8 hidden">
-            <p class="array-provided"></p>
-            <p class="for-loop-provided">for (let i = <input id="starting-value" class="shadow border w-10" type="number" value="0" step="1">; i < inputArray.length; i++) {
+          <button class="for-loop-button bg-green-500 rounded px-2 h-10 w-full text-white" onclick="createElementInArray()">+ Element</button>
+          <button class="for-loop-button bg-indigo-500 text-white rounded p-2 w-full mt-1" onclick="myFunction()">Submit Array</button>
+          <div class="for-loop-input mt-8 hidden mx-auto">
+            <p class="array-provided mb-1"></p>
+            <p class="for-loop-provided mb-1">for (let i = <input id="starting-value" class="shadow border w-10" type="number" value="0" step="1">; i < inputArray.length; i++) {
             <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;<input id="first-body" class="shadow border w-40" type="text">inputArray[i]<input id="second-body" class="shadow border w-40" type="text">;
+            &nbsp;&nbsp;&nbsp;&nbsp;<input id="first-body" class="shadow border" type="text">inputArray[i]<input id="second-body" class="shadow border" type="text">;
             <br/>
             }
             </p>
-            <button class="bg-red-600 rounded p-1" onclick="visualize()">Visualize my loop!</button>
+            <button class="bg-red-600 rounded px-2 mt-1 h-10 w-full text-white" onclick="visualize()">Visualize my loop!</button>
           </div>
         </div>
       </main>
+      <footer class="fixed left-0 bottom-0 w-full text-center">
+        <p>Created with <i class="fa fa-heart" aria-hidden="true"></i>
+ by Maliha Hossain</p>
+      </footer>
     </body>
   </html>
-
