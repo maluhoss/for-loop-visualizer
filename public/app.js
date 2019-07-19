@@ -100,7 +100,7 @@ function displayLoopInfo(inputArray, startingValue) {
     loop = 'loops';
   }
 
-  loopInfo.innerHTML = `Array is [${inputArray}] <br/> Array length is ${inputArray.length} and starting index is ${startingValue} <br/>Therefore, there will be ${inputArray.length - startingValue} ${loop}`;
+  loopInfo.innerHTML = `inputArray = [${inputArray}] <br/> Array length is ${inputArray.length} and starting index is ${startingValue} <br/>Therefore, there will be ${inputArray.length - startingValue} ${loop}`;
   visualized.appendChild(loopInfo);
 }
 
@@ -115,7 +115,7 @@ function repeatLoop(inputArray, startingIndex, inputBody, secondInputBody) {
     let forLoop = document.createElement("code");
     forLoop.className = "language-javascript";
     forLoop.classList.add("font-sans")
-    forLoop.innerHTML = `for (let i = ${i}; i < <span class="inline-block w-32 text-center bg-red-200 rounded cursor-pointer p-1" onclick="showLength(${inputArray.length})">inputArray.length</span>; i++) { <br/> &nbsp;&nbsp;&nbsp;&nbsp;${inputBody} <span class="inline-block w-32 text-center bg-red-200 rounded cursor-pointer mt-1 p-1" onclick="showValue(${i}, ${inputArray[i]})">inputArray[${i}]</span> ${secondInputBody};<br/>}`;
+    forLoop.innerHTML = `for (let i = ${i}; i < <span class="inline-block w-40 text-center bg-red-200 rounded cursor-pointer p-1" onclick="showLength(${inputArray.length})">inputArray.length</span>; i++) { <br/> &nbsp;&nbsp;&nbsp;&nbsp;${inputBody} <span class="inline-block w-32 text-center bg-red-200 rounded cursor-pointer mt-1 p-1" onclick="showValue(${i}, ${inputArray[i]})">inputArray[${i}]</span> ${secondInputBody};<br/>}`;
     visualized.appendChild(forLoopNumber);
     visualized.appendChild(forLoop);
     begin++;
